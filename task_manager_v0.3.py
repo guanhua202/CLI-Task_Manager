@@ -17,14 +17,12 @@ def start():
 	print('==========================')
 
 def list_output(TASKS):
-	print()
-	print(f'Выбрано: Вывести список задач')
+	print(f'\nВыбрано: Вывести список задач')
 
 	if len(TASKS) == 0:
 		print('--------------------')
 		print('Список пуст')
-		print('--------------------')
-		print()
+		print('--------------------\n')
 	else:
 		print('--------------------')
 		print('Список задач: ')
@@ -32,32 +30,26 @@ def list_output(TASKS):
 		for task in TASKS:
 			print(f'--> {task}')
 
-		print('--------------------')
-		print()
+		print('--------------------\n')
 
 def add_task(TASKS):
-	print()
-	print(f'Выбрано: Добавить задачу')
-	print()
+	print(f"\nВыбрано: Добавить задачу\n")
 		
-	new_task_name = str(input('Введите название задачи: '))
+	new_task_name = str(input("Введите название задачи: "))
 
 	# Обработка имени новой задачи
 	while new_task_name == '':
 		print("❌ Заполните пустое поле!")
-		new_task_name = str(input('Введите название задачи: '))
+		new_task_name = str(input("Введите название задачи: "))
 	else:
 		# Добавление в список задач
 		TASKS.append(new_task_name.capitalize())
 		print('Задача успешно добавлена!')
-		print('Чтобы проверить нажмите <1>')
+		print('Чтобы проверить нажмите <1>\n')
 		sleep(1)
-		print()
 
 def change_task(TASKS):
-	print()
-	print(f"Выбрано: Изменить задачу")
-	print()
+	print(f"\nВыбрано: Изменить задачу\n")
 
 	chg_task_num = str(input("Введите номер изменяемой задачи: "))
 	task_isvalid = ''
@@ -69,10 +61,8 @@ def change_task(TASKS):
 			task_isvalid = TASKS[i]
 
 	if task_isvalid == '':
-		print()
-		print("Нет такой задачи.")
+		print("\nНет такой задачи.\n")
 		sleep(1)
-		print()
 	else:
 		print(f"Выбрана: <{task_isvalid}>")
 		print('--------------------')
@@ -83,25 +73,21 @@ def change_task(TASKS):
 
 		if int(chg_task) == 1:
 			if task_isvalid.endswith(" \u2705"):
-				print("⚠️  Задача уже отмечена как выполненная.")
+				print("⚠️  Задача уже отмечена как выполненная.\n")
 				sleep(1)
-				print()
 			else:
 				TASKS[i] = task_isvalid + " \u2705"
-				print(f'Задача <{task_isvalid}> отмечена выполненой \u2705')
-				print()
+				print(f'Задача <{task_isvalid}> отмечена выполненой \u2705 \n')
 				sleep(1)
 
 		elif int(chg_task) == 2:
 			task_isvalid = str(input("Введите новое название задачи: "))
 			TASKS[i] = task_isvalid
-			print(f'Название задачи изменено на: <{TASKS[i]}>')
+			print(f'Название задачи изменено на: <{TASKS[i]}>\n')
 			sleep(1)
-			print()
 
 def delete_task(TASKS):
-	print(f'Выбрано: Удалить задачу')
-	print()
+	print(f'Выбрано: Удалить задачу\n')
 	print('--------------------')
 	print("1. Удалить конкретную задачу\n2. Удалить все задачи")
 	print('--------------------')
@@ -122,9 +108,7 @@ def delete_task(TASKS):
 
 			# Обработка удаляемой задачи
 			if del_task == '':
-				print()
-				print('Нет такой задачи.')
-				print()
+				print('\nНет такой задачи.\n')
 			else:
 				print(f'Будет удалена задача: {TASKS[del_task]}')
 				delete = str(input('Удалить? (Y/N): ')).lower()
@@ -149,19 +133,16 @@ def delete_task(TASKS):
 				if delete == 'y':
 					del TASKS[::]
 					TASKS = []
-					print(f'Список задач очищен.')
+					print(f'Список задач очищен.\n')
 					sleep(1)
-					print()
 
 				elif delete == 'n':
 					print('Отмена очистки списка.')
 
 				else:
-					print("⚠️  Введите символ Y/y или N/n")
-					print()
+					print("⚠️  Введите символ Y/y или N/n\n")
 			else:
-				print()
-				print('ℹ️  Пустой список нельзя очистить.')
+				print('\nℹ️  Пустой список нельзя очистить.')
 				sleep(1)
 	else:
 		while del_select == '':
@@ -192,10 +173,7 @@ while start_menu != 5:
 		print()
 		start_menu = int(input("Выберите действие: "))
 	except ValueError:
-		print('❌ Ошибка. Вы ввели не цифру.')
+		print('❌ Ошибка. Вы ввели не цифру.\n')
 		start_menu = 0
-		print()
 
-print()
-print('До скорой встречи.')
-print()
+print('\nДо скорой встречи.\n')
